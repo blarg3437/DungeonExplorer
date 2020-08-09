@@ -21,9 +21,11 @@ namespace GameTest1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 1080;
-            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.PreferredBackBufferWidth = 1080;
             graphics.ApplyChanges();
+            graphics.SynchronizeWithVerticalRetrace = true;
+            IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace GameTest1.Actors
     abstract class Actor
     {
         protected bool IsItem;
+        public Rectangle textureRegion{get; protected set;}
         public int x { get; protected set; }
         public int y { get; protected set; }
 

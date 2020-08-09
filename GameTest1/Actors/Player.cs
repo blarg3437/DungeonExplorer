@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameTest1.Components;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace GameTest1.Actors
 {
@@ -20,5 +21,7 @@ namespace GameTest1.Actors
         {
             input.update();
         }
+
+       
     }
 }

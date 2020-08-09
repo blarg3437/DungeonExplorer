@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameTest1.Actors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,6 +13,7 @@ namespace GameTest1.GameScreens
     class DungeonLoop : GameScreen
     {
         Dungeon currentDungeon;
+        
        
         public DungeonLoop()
         {
@@ -21,12 +23,15 @@ namespace GameTest1.GameScreens
         public void OnGameStart()
         {
             StartDungeon();
+            
             //just a temporary method until I figure out what Im doing 
         }
 
         public void StartDungeon()
         {
-            currentDungeon.GenerateDungeonOfSize(35,35);
+           currentDungeon.StartDungeon();
+           
+           
         }
         public override void Load(ContentManager content)
         {

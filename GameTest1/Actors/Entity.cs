@@ -10,6 +10,14 @@ namespace GameTest1.Actors
 {
     class Entity : Actor
     {
+        enum Direction
+        {
+            UP,
+            RIGHT,
+            DOWN,
+            LEFT
+        }
+        Direction facing;
         Dungeon world;
         //A list of current effects
         public Entity(Dungeon currentworld)
@@ -30,7 +38,7 @@ namespace GameTest1.Actors
         }
         public void setXBy(int incX)
         {
-            if (x + incX < world.GetWidth() && x+incX >=0)
+            if (x + incX < world.GetWidth() && x + incX > 0)
             {
                 x += incX;
             }
@@ -38,7 +46,7 @@ namespace GameTest1.Actors
 
         public void setYBy(int incY)
         {
-            if (y + incY < world.GetWidth() && y + incY >= 0)
+            if (y + incY < world.GetWidth() && y + incY > 0)
             {
                 y += incY;
             }

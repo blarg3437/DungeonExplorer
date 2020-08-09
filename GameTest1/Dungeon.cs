@@ -16,6 +16,8 @@ namespace GameTest1
     class Dungeon
     {
         Texture2D currenttexture;
+        Texture2D itemTexSheet;
+        
         Tile[,] TileMap;
         Random rand;
         int width, height;
@@ -72,6 +74,25 @@ namespace GameTest1
         {
             //this will be used to load up custom dungeons for boss fights and stuff
         }
+        public void StartDungeon()
+        {
+            GenerateDungeonOfSize(35, 35);
+            AddActorToMap(player, 0, 0);
+            //next step is to draw the actors
+        }
+        public void AddActorToMap(Actor newActor, int x, int y)
+        {
+            if(newActor != null)
+            {
+                if(x <= width && x >= 0)
+                {
+                    if(y <= height && y >= 0)
+                    {
+                        TileMap[x,y].setActor(newActor);//returns false if occupied, but doesnt handle it
+                    }
+                }
+            }
+        }
         
         public void Update()
         {
@@ -80,10 +101,11 @@ namespace GameTest1
         }
         public void Draw(SpriteBatch spritebatch)
         {
-            for (int y = camera.cameraY; y < camera.cameraY + camera.height; y++)
+            for (int y = camera.cameraY; y < (camera.cameraY + camera.height) ; y++)
             {
-                for (int x = camera.cameraX; x < camera.cameraX + camera.width; x++)
+                for (int x = camera.cameraX; x < (camera.cameraX + camera.width); x++)
                 {               
+                   
                     spritebatch.Draw(currenttexture,
                         new Rectangle((x - camera.cameraX ) * Global.TexSize, (y - camera.cameraY) * Global.TexSize, Global.TexSize, Global.TexSize),
                         new Rectangle(TileMap[x, y].TileId * 32, 0, 32, 32),
@@ -91,7 +113,7 @@ namespace GameTest1
                 }
             }
 
-
+         sprite
 
         }
     }

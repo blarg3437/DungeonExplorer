@@ -19,5 +19,26 @@ namespace GameTest1
             TileId = TileID;
             this.isWalkable = isWalkable;
         }
+
+        public Actor getActor()
+        {
+            return ActorOn;
+        }
+        public bool setActor(Actor newActor)
+        {
+            if(ActorOn == null)
+            {
+                ActorOn = newActor;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void RemoveActor()
+        {
+            ActorOn = null;
+        }
     }
 }

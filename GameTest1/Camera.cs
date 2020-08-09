@@ -50,9 +50,12 @@ namespace GameTest1
             //if cx > mapwidth, set it to mapwidth - width
 
             
-                        int focX = focus.x;
+            int focX = focus.x;
             int focY = focus.y;
             
+            /*
+             * these checks are in place to control the camera and make sure it does not follow the focused actor off the map.
+             */
             if(focX-width/2 < 0)
             {
                 cameraX = 0;
@@ -69,6 +72,14 @@ namespace GameTest1
             else
             {
                 cameraY = focY - height / 2;
+            }
+            if(focX + width/2 >= map.GetWidth())
+            {
+                cameraX = map.GetWidth() - width;
+            }
+            if(focY + height/2 >= map.GetHeight())
+            {
+                cameraY = map.GetHeight() - height;
             }
             Debug.WriteLine("Cx: " + cameraX + "  Cy:" + cameraY);
         }
