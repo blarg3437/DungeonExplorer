@@ -15,6 +15,7 @@ namespace GameTest1.Actors
         public Player(Dungeon theworld):base(theworld)
         {
             input = new InputComponent(this);
+            textureRegion = new Rectangle(0, 0, Global.TexSize, Global.TexSize);
         }
 
         public override void Update()

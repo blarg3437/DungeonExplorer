@@ -23,19 +23,19 @@ namespace GameTest1.Components
 
             if(keystate.IsKeyDown(Keys.A))
             {
-                holder.setXBy(-1);
+                holder.MoveLeft();   
             }
             if(keystate.IsKeyDown(Keys.D))
             {
-                holder.setXBy(1);
+                holder.MoveRight();
             }
             if(keystate.IsKeyDown(Keys.W))
             {
-                holder.setYBy(-1);
+                holder.MoveUp();
             }
             if(keystate.IsKeyDown(Keys.S))
             {
-                holder.setYBy(1);
+                holder.MoveDown();
             }
         }
     }

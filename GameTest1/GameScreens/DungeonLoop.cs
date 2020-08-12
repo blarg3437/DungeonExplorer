@@ -35,7 +35,7 @@ namespace GameTest1.GameScreens
         }
         public override void Load(ContentManager content)
         {
-            currentDungeon.LoadTexture(content.Load<Texture2D>("smallertileset"));
+            currentDungeon.LoadTexture(content);
             base.Load(content);
         }
         

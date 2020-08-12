@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameTest1.Actors;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameTest1
@@ -17,7 +19,9 @@ namespace GameTest1
     {
         Texture2D currenttexture;
         Texture2D itemTexSheet;
-        
+
+        Texture2D playerTex;
+
         Tile[,] TileMap;
         Random rand;
         int width, height;
@@ -27,14 +31,17 @@ namespace GameTest1
         {
             rand = new Random();
             player = new Player(this);
+            
+            
             camera = new Camera(player, this);
         }
 
         public int GetWidth() => width;
         public int GetHeight() => height;
-        public void LoadTexture(Texture2D spritesheet)
+        public void LoadTexture(ContentManager manager)
         {
-            currenttexture = spritesheet;
+            currenttexture = manager.Load<Texture2D>("smallertileset");
+            playerTex = manager.Load<Texture2D>("Mechanic");
         }
         public void GenerateRandomDungeon()
         {
@@ -68,6 +75,7 @@ namespace GameTest1
                     // remember to set the walkable tiles correctly
                 }
             }
+            player.setPos(2, 2);
         }
 
         public void CreateDungeonFromFile(string Directory)
@@ -94,10 +102,18 @@ namespace GameTest1
             }
         }
         
+        public void RemoveActorFromMap(int x, int y)
+        {
+            TileMap[x, y].setActor(null);
+            
+
+            
+        }
         public void Update()
         {
-            camera.UpdateView();
             player.Update();
+            camera.UpdateView();
+            
         }
         public void Draw(SpriteBatch spritebatch)
         {
@@ -113,8 +129,10 @@ namespace GameTest1
                 }
             }
 
-         sprite
-
+            //this will be where the entity drawcall is
+            spritebatch.Draw(playerTex, new Rectangle((player.x - camera.cameraX) * Global.TexSize, (player.y-camera.cameraY) * Global.TexSize, Global.TexSize, Global.TexSize), Color.White);
+           
+            Debug.WriteLine("X: " + player.x + " Y: " + player.y + " CX:" + camera.cameraX + " CY: " + camera.cameraY);
         }
     }
 }

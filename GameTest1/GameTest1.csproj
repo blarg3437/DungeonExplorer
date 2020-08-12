@@ -48,6 +48,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Components\InputComponent.cs" />
     <Compile Include="Controllers\ActorController.cs" />
+    <Compile Include="Controllers\ActorManager.cs" />
     <Compile Include="Controllers\LevelManager.cs" />
     <Compile Include="Controllers\ScreenManager.cs" />
     <Compile Include="Dungeon.cs" />
@@ -75,6 +76,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

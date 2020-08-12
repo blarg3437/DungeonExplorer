@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace GameTest1.Actors
         public int x { get; protected set; }
         public int y { get; protected set; }
 
+       
         
     }
 }

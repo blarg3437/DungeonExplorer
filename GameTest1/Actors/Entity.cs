@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace GameTest1.Actors
         }
         Direction facing;
         Dungeon world;
+       
         //A list of current effects
         public Entity(Dungeon currentworld)
         {
@@ -26,35 +28,50 @@ namespace GameTest1.Actors
             world = currentworld;
         }
 
-        public void SetX(int newX)
+        public void MoveUp()
         {
-            if (newX >= 0 && newX < world.GetWidth())
-                x = newX;
+            int newY = y - 1;
+            setPos(x, newY);
         }
-        public void SetY(int newY)
+        public void MoveDown()
         {
-            if (newY >= 0 && newY < world.GetHeight())
-                x = newY;
+            int newY = y + 1;
+            setPos(x, newY);
         }
-        public void setXBy(int incX)
+        public void MoveLeft()
         {
-            if (x + incX < world.GetWidth() && x + incX > 0)
-            {
-                x += incX;
-            }
+            
+            setPos(x - 1, y);
         }
 
-        public void setYBy(int incY)
+        public void MoveRight()
         {
-            if (y + incY < world.GetWidth() && y + incY > 0)
+            setPos(x + 1, y);
+        }
+        public bool setPos(int newX, int newY)
+        {
+            if(newX >= 0 && newX < world.GetWidth() && newY >= 0 && newY < world.GetHeight())
             {
-                y += incY;
+                world.RemoveActorFromMap(x, y);
+                world.AddActorToMap(this, newX, newY);
+                x = newX;
+                y = newY;
+                System.Diagnostics.Debug.WriteLine("True");
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine("false");
+                return false;
             }
         }
+      
 
         public virtual void Update()
         {
 
         }
+
+        
     }
 }
