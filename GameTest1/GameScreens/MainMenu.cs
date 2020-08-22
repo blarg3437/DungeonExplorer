@@ -26,7 +26,7 @@ namespace GameTest1.GameScreens
             background = content.Load<Texture2D>("clouds over ocean");
             base.Load(content);
         }
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
 
             KeyboardState key = Keyboard.GetState();

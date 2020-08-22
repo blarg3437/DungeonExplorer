@@ -67,7 +67,7 @@ namespace GameTest1.Actors
         }
       
 
-        public virtual void Update()
+        public virtual void Update(GameTime gametime)
         {
 
         }

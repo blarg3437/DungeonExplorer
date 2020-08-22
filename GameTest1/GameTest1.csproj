@@ -42,11 +42,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Actors\Enemy.cs" />
     <Compile Include="Actors\Entity.cs" />
     <Compile Include="Actors\Item.cs" />
     <Compile Include="Actors\Player.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Components\InputComponent.cs" />
+    <Compile Include="Content\Scenes.cs" />
     <Compile Include="Controllers\ActorController.cs" />
     <Compile Include="Controllers\ActorManager.cs" />
     <Compile Include="Controllers\LevelManager.cs" />

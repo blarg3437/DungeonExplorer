@@ -49,7 +49,7 @@ namespace GameTest1.Controllers
 
         public void Update(GameTime gametime)
         {
-            activescreens.Peek().Update();
+            activescreens.Peek().Update(gametime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -8,6 +8,7 @@ using GameTest1.Actors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace GameTest1
 {
@@ -22,16 +23,24 @@ namespace GameTest1
 
         Texture2D playerTex;
 
+        List<Entity> Entities;
+        int currentEntity = 0;
         Tile[,] TileMap;
         Random rand;
         int width, height;
         Camera camera;
         Player player;
+
+        double tempTime = 0.25f;
+        double elapsedTime = 0;
         public Dungeon()
         {
             rand = new Random();
             player = new Player(this);
-            
+            Entities = new List<Entity>();
+            Entities.Add(player);
+            Entities.Add(new Enemy(this, 4, 5));
+            Entities.Add(new Enemy(this, 20, 20));
             
             camera = new Camera(player, this);
         }
@@ -109,12 +118,35 @@ namespace GameTest1
 
             
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            player.Update();
+            player.Update(gameTime);
             camera.UpdateView();
+            Debug.WriteLine(currentEntity);
             
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                if (elapsedTime >= tempTime)
+                {
+                    //this is going too fast
+                    if (currentEntity == Entities.Count-1)
+                    {
+                        currentEntity = 0;
+                    }
+                    else
+                    {
+                        currentEntity++;
+                    }
+                    camera.changeFocus(Entities[currentEntity]);
+                    elapsedTime = 0;
+                }
+                else
+                {
+                    elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
+                }
+            }
         }
+
         public void Draw(SpriteBatch spritebatch)
         {
             for (int y = camera.cameraY; y < (camera.cameraY + camera.height) ; y++)

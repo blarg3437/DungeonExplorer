@@ -39,9 +39,9 @@ namespace GameTest1.GameScreens
             base.Load(content);
         }
         
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            currentDungeon.Update();
+            currentDungeon.Update(gameTime);
         }
         public override void Draw(SpriteBatch spritebatch)
         {

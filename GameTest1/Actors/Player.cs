@@ -18,9 +18,9 @@ namespace GameTest1.Actors
             textureRegion = new Rectangle(0, 0, Global.TexSize, Global.TexSize);
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            input.update();
+            input.update(gameTime);
         }
 
        
